@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "926816545675",
+    "firebase_url": "https://churcher.firebaseio.com",
+    "project_id": "churcher",
+    "storage_bucket": "churcher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926816545675:android:1de81ceb89486882e99d8e",
+        "android_client_info": {
+          "package_name": "admiralpavel.churcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926816545675-3tegporaegt7dln2rbljtendjaijhhst.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKZcjPznnzbKy5KL1iHtHa6NR6PCcRZ94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926816545675-3tegporaegt7dln2rbljtendjaijhhst.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
