@@ -1,38 +1,48 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
+import 'SuggestedChurchesPage.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
-  _ProfilePageState createState() => _ProfilePageState();
+  _ProfilePageState createState() => _ProfilePageState(user);
+
+  ProfilePage(this.user);
+
+  final FirebaseUser user;
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseUser user;
+
+  _ProfilePageState(this.user);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FlatButton(
-        onPressed: () {},
-        child: Text('Press me'),
-      ),
+    return Column(
+      children: [
+        FlatButton(
+          onPressed: () {},
+          child: Column(
+            children: [
+              Text(user.email),
+              user.email == "admiralpavel99@gmail.com"
+                  ? FlatButton(
+                      child: Text("Список церквей для модерации"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  SuggestedChurchesPage()),
+                        );
+                      },
+                    )
+                  : Container(),
+            ],
+          ),
+        )
+      ],
     );
   }
-
-//  Future<FirebaseUser> _handleSignIn() async {
-//    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-//    final GoogleSignInAuthentication googleAuth =
-//        await googleUser.authentication;
-//
-//    final AuthCredential credential = GoogleAuthProvider.getCredential(
-//      accessToken: googleAuth.accessToken,
-//      idToken: googleAuth.idToken,
-//    );
-//
-//    final FirebaseUser user =
-//        (await _auth.signInWithCredential(credential)).user;
-//    print("signed in " + user.displayName);
-//    return user;
-//  }
 }

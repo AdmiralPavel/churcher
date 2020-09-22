@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -47,7 +46,7 @@ class MainMapPageState extends State<MainMapPage> {
   void _createNewChurch(BuildContext buildContext) async {
     var result = await Navigator.push(
         context, MaterialPageRoute(builder: (context) => ChurchCreationPage()));
-    if (result)
+    if (result != null)
       Scaffold.of(buildContext).showSnackBar(SnackBar(
         content: Text("Добавленная вами церковь отправлена на модерацию"),
       ));

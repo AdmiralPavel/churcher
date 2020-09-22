@@ -4,7 +4,6 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -106,7 +105,7 @@ class _ChurchCreationPageState extends State<ChurchCreationPage> {
   }
 
   Future<String> uploadChurchExceptImage(Church church) async {
-    var doc = await Firestore.instance.collection('churches').add({
+    var doc = await Firestore.instance.collection('churchesSuggested').add({
       'coords': GeoPoint(church.coords.latitude, church.coords.longitude),
       'description': church.description,
       'name': church.name,

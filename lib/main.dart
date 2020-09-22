@@ -1,5 +1,9 @@
 import 'package:churcher/SignInUpPage.dart';
+import 'package:churcher/SuggestedChurchesPage.dart';
+import 'package:churcher/controllers/UserController.dart';
+import 'package:churcher/data_models/MyUser.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'MainMapPage.dart';
 
@@ -8,9 +12,12 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Churcher',
-      home: MainPage(),
+    return ChangeNotifierProvider(
+      create: (context) => MyUser(),
+      child: MaterialApp(
+        title: 'Churcher',
+        home: MainPage(),
+      ),
     );
   }
 }
@@ -22,7 +29,6 @@ class MainPage extends StatefulWidget {
 
 class MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
-
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions;
@@ -43,6 +49,18 @@ class MainPageState extends State<MainPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Churcher'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          SuggestedChurchesPage()));
+            },
+          )
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -63,5 +81,11 @@ class MainPageState extends State<MainPage> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    UserController.autoSignIn(context);
   }
 }
